@@ -7,6 +7,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-league-spartan: var(--font-league-spartan);
 }
 
 
@@ -38,6 +39,10 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Opinion Chambers Brand Colors */
+    --rust-color: rgb(181, 50, 30);
+    --grey-color: rgb(76, 74, 75);
   }
   .dark {
     --background: 0 0% 3.9%;
