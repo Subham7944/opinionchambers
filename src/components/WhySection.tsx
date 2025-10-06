@@ -1,103 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const WhySection = () => {
-  return (
-    <section id="why" className="bg-white">
-      {/* First Page: Why a Second Opinion Matters */}
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <h2 className="font-league-spartan font-bold text-3xl md:text-4xl lg:text-5xl text-grey mb-8 underline decoration-rust decoration-4 underline-offset-4">
-            Why a Second Opinion Matters
-          </h2>
-          
-          <h3 className="font-league-spartan font-bold text-xl md:text-2xl lg:text-3xl text-grey mb-6">
-            Beyond Overconfidence: The Power of Grounded Vision
-          </h3>
-        </motion.div>
+  const allSteps = [
+    {
+      number: "[1]",
+      title: "Design Gaps:",
+      description: "Functional issues, impractical layouts, or overlooked details.",
+      image: "/images/why/ahmad-ossayli-jMucH8Q6bGc-unsplash.jpg"
+    },
+    {
+      number: "[2]",
+      title: "Execution Risks:",
+      description: "Poor workmanship, sequencing errors, or misinterpretation of drawings.",
+      image: "/images/why/hana-kim-slRc0JDsMdk-unsplash.jpg"
+    },
+    {
+      number: "[3]",
+      title: "Material Mismatches:",
+      description: "Wrong selections leading to durability or aesthetic compromises.",
+      image: "/images/why/ionut-vlad-idXQEOxhmvU-unsplash.jpg"
+    },
+    {
+      number: "[4]",
+      title: "Budget Overruns:",
+      description: "Unforeseen changes, disputes, or delayed procurement.",
+      image: "/images/why/roberto-nickson-so3wgJLwDxo-unsplash.jpg"
+    },
+    {
+      number: "[5]",
+      title: "Compliance Failures:",
+      description: "Code violations, missed sustainability benchmarks, or rejected approvals.",
+      image: "/images/why/zane-lee-9cnzCy4YsNE-unsplash.jpg"
+    }
+  ];
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 mt-12">
-          {/* Left Column */}
-          <div className="space-y-6">
-            <p className="font-league-spartan text-base md:text-lg text-grey leading-relaxed">
-              In design and construction, what looks perfect on paper can unravel on site. Drawings clash, materials fail, budgets inflate, and deadlines slip. By the time issues surface, it&apos;s too late, the cost of rework far exceeds the cost of prevention.
-            </p>
-            
-            <div className="space-y-4">
-              <h4 className="font-league-spartan font-bold text-lg md:text-xl text-grey">Where Things Usually Go Wrong</h4>
-              
-              <div className="space-y-3">
-                <div>
-                  <p className="font-league-spartan font-bold text-grey">Design Gaps:</p>
-                  <p className="font-league-spartan text-grey">Functional issues, impractical layouts, or overlooked details.</p>
-                </div>
-                
-                <div>
-                  <p className="font-league-spartan font-bold text-grey">Execution Risks:</p>
-                  <p className="font-league-spartan text-grey">Poor workmanship, sequencing errors, or misinterpretation of drawings.</p>
-                </div>
-                
-                <div>
-                  <p className="font-league-spartan font-bold text-grey">Material Mismatches:</p>
-                  <p className="font-league-spartan text-grey">Wrong selections leading to durability or aesthetic compromises.</p>
-                </div>
-                
-                <div>
-                  <p className="font-league-spartan font-bold text-grey">Budget Overruns:</p>
-                  <p className="font-league-spartan text-grey">Unforeseen changes, disputes, or delayed procurement.</p>
-                </div>
-                
-                <div>
-                  <p className="font-league-spartan font-bold text-grey">Compliance Failures:</p>
-                  <p className="font-league-spartan text-grey">Code violations, missed sustainability benchmarks, or rejected approvals.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Column */}
-          <div className="space-y-6">
-            <p className="font-league-spartan text-base md:text-lg text-grey mb-4 leading-relaxed">
-              Our approach blends <span className="font-bold">expert insight</span> with <span className="font-bold">creative problem-solving</span>, helping you identify overlooked opportunities and potential challenges before they turn into costly mistakes.
-            </p>
-            
-            <p className="font-league-spartan text-base md:text-lg text-grey mb-6 leading-relaxed">
-              Whether you need <span className="font-bold">concept validation</span>, <span className="font-bold">design refinement</span>, or a <span className="font-bold">thorough execution review</span>, we bring clarity, precision, and innovative thinking to every stage of your project. By assessing <span className="font-bold">aesthetics, space utilization, material choices, and quality standards</span>, we provide actionable recommendations that strengthen your design and enhance overall performance.
-            </p>
-            
-            <p className="font-league-spartan text-base md:text-lg text-grey font-bold leading-relaxed">
-              The result - A project that not only meets expectations but exceeds them—delivered with confidence, efficiency, and style and within the time frame. Your vision deserves to be realized in the best possible way. A fresh set of expert eyes can make all the difference.
-            </p>
-            
-            {/* Logo */}
-            <div className="flex justify-end mt-8">
-              <div className="w-16 h-16">
-                <Image
-                  src="/images/hero/LOGO (1).jpg"
-                  alt="Opinion Chambers Logo"
-                  width={80}
-                  height={80}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Large Spacer */}
-      <div className="h-32 md:h-48 lg:h-64 bg-gray-50"></div>
-      
-      {/* Second Page: The Opinion Chambers Advantage */}
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+  const topRowSteps = allSteps.slice(0, 2);
+  const bottomRowSteps = allSteps.slice(2, 5);
+
+  return (
+    <section id="why" className="bg-black text-white">
+      {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,97 +50,185 @@ const WhySection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          {/* Title in box */}
-          <div className="mb-12 py-4">
-            <h2 className="font-league-spartan font-bold text-3xl md:text-4xl lg:text-5xl text-grey text-center">
-              The Opinion Chambers Advantage – Why you should hire Us
-            </h2>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Title */}
+            <div>
+              <h2 className="text-2xl md:text-2xl font-bold text-white mb-6" style={{ lineHeight: '120%' }}>
+                # WHY -
+              </h2>
+              <h3 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+                Why a Second <span className="text-blue-300">Opinion Matters</span>
+              </h3>
+            </div>
+            
+            {/* Right Column - Description */}
+            <div className="lg:pt-4">
+              <h4 className="text-2xl font-bold text-gray-300 mb-6" style={{ lineHeight: '130%' }}>
+                The Hidden Cost of Overconfidence
+              </h4>
+              <p className="text-lg text-gray-300 leading-relaxed" style={{ lineHeight: '150%', fontWeight: 400 }}>
+                In design and construction, what looks perfect on paper can unravel on site. Drawings clash, materials fail, budgets inflate, and deadlines slip. By the time issues surface, it's too late, the cost of rework far exceeds the cost of prevention.
+              </p>
+            </div>
           </div>
-          
-          <p className="font-league-spartan text-base md:text-lg text-grey mb-8 leading-relaxed">
-            Choosing Opinion Chambers means gaining more than a second opinion—you gain a partner dedicated to elevating your project&apos;s success. Our expertise ensures your ideas are transformed into results that are beautiful, functional, and cost-effective.
+        </motion.div>
+      </div>
+
+      {/* Where Things Usually Go Wrong Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-8" style={{ lineHeight: '120%' }}>
+            Where Things Usually Go Wrong
+          </h3>
+        </motion.div>
+      </div>
+
+      {/* Two Images in One Row */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-8 mb-16"
+        >
+          {topRowSteps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden group cursor-pointer"
+            >
+              <div className="aspect-[4/3] relative">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                {/* Image Overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)"
+                  }}
+                />
+                {/* Number Overlay */}
+                <div className="absolute top-6 right-6">
+                  <span 
+                    className="text-6xl font-bold text-blue-500 opacity-90"
+                    style={{ 
+                      fontFamily: 'monospace',
+                      textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+                    }}
+                  >
+                    {step.number}
+                  </span>
+                </div>
+              </div>
+              {/* Text Below Image */}
+              <div className="pt-6">
+                <h3 className="text-xl font-bold text-white mb-3" style={{ lineHeight: '120%' }}>
+                  {step.title}
+                </h3>
+                <p className="text-base text-gray-300 leading-relaxed" style={{ lineHeight: '150%', fontWeight: 400 }}>
+                  {step.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Three Images in Second Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-6 mb-20"
+        >
+          {bottomRowSteps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden group cursor-pointer"
+            >
+              <div className="aspect-[4/3] relative">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                {/* Image Overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)"
+                  }}
+                />
+                {/* Number Overlay */}
+                <div className="absolute top-6 right-6">
+                  <span 
+                    className="text-6xl font-bold text-blue-500 opacity-90"
+                    style={{ 
+                      fontFamily: 'monospace',
+                      textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+                    }}
+                  >
+                    {step.number}
+                  </span>
+                </div>
+              </div>
+              {/* Text Below Image */}
+              <div className="pt-6">
+                <h3 className="text-xl font-bold text-white mb-3" style={{ lineHeight: '120%' }}>
+                  {step.title}
+                </h3>
+                <p className="text-base text-gray-300 leading-relaxed" style={{ lineHeight: '150%', fontWeight: 400 }}>
+                  {step.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Bottom Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h4 className="text-xl font-medium text-white mb-6" style={{ lineHeight: '130%' }}>
+            Ready to Protect Your Investment?
+          </h4>
+          <p className="text-base text-gray-300 mb-8 max-w-2xl mx-auto" style={{ lineHeight: '150%', fontWeight: 400 }}>
+            Don't let design gaps and execution risks compromise your vision. Get expert insight that ensures your project succeeds from concept to completion.
           </p>
-          
-          <p className="font-league-spartan text-base md:text-lg font-bold text-grey mb-6">
-            Our advantages include:
-          </p>
-          
-          <div className="space-y-4 mb-16">
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Fresh Creative Perspectives</span>
-                <span className="font-league-spartan text-grey"> – Bringing new ideas and design insights that enhance your project&apos;s potential.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Early Detection of Potential Issues</span>
-                <span className="font-league-spartan text-grey"> – Identifying challenges before they escalate, saving time, money, and effort.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Alternative Layouts and Design Solutions</span>
-                <span className="font-league-spartan text-grey"> – Offering multiple approaches to achieve the best balance of aesthetics, functionality, and efficiency.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Expertise That Minimizes Costly Errors</span>
-                <span className="font-league-spartan text-grey"> – Drawing from decades of professional experience to prevent mistakes and ensure smooth execution.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Budget-Friendly Planning</span>
-                <span className="font-league-spartan text-grey"> – Helping you make smart financial decisions without compromising quality or style.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Optimized Resource Use</span>
-                <span className="font-league-spartan text-grey"> – Maximizing the value of time, materials, and manpower for efficient project delivery.</span>
-              </div>
-            </div>
-            
-            <div className="flex items-start">
-              <span className="text-rust font-bold mr-2">-</span>
-              <div>
-                <span className="font-league-spartan font-bold text-grey">Superior End Results</span>
-                <span className="font-league-spartan text-grey"> – Ensuring the final outcome not only meets but exceeds your expectations.</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mb-16">
-            <h3 className="font-league-spartan font-bold text-3xl md:text-4xl lg:text-5xl text-grey mb-4">
-              We see what others miss out.
-            </h3>
-          </div>
-          
-          {/* Logo positioned at bottom right */}
-          <div className="flex justify-end">
-            <div className="w-16 h-16">
-              <Image
-                src="/images/hero/LOGO (1).jpg"
-                alt="Opinion Chambers Logo"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-          </div>
+          <button 
+            className="px-8 py-4 bg-blue-200 text-black font-bold text-lg uppercase tracking-wider hover:bg-blue-500 transition-all duration-300 transform hover:scale-105"
+            style={{
+              borderRadius: '0px',
+              boxShadow: '0 4px 15px rgba(163,255,0,0.3)'
+            }}
+          >
+            Get Your Second Opinion
+          </button>
         </motion.div>
       </div>
     </section>
