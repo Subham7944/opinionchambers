@@ -22,7 +22,7 @@ const Navigation = () => {
     { name: "Why", href: "#why" },
     { name: "When", href: "#when" },
     { name: "How", href: "#how" },
-    { name: "About Us", href: "#about" },
+    { name: "About Us", href: "#legacy" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -39,31 +39,33 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white shadow-lg"
-          : "bg-white"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20 py-2">
+        <div className="flex items-center justify-between h-20 py-2">
           <div className="flex-shrink-0">
             <a href="#" className="flex items-center py-1" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-              <Image 
-                src="/images/header/Top logo.jpg" 
-                alt="Opinion Chambers Logo" 
-                width={120}
-                height={40}
-                className="h-8 md:h-10 w-auto"
-              />
+              <div className="relative h-12 md:h-16 w-[280px]">
+                <Image 
+                  src="/images/header/logo main.jpg" 
+                  alt="Opinion Chambers Logo" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-grey hover:text-rust px-2 py-1 text-base font-league-spartan font-bold transition-colors duration-200"
+                  className="text-[#444444] hover:text-blue-600 px-4 py-2 text-base font-bold transition-colors duration-200"
                 >
                   {item.name}
                 </button>
@@ -71,18 +73,20 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* CTA Button removed */}
+          {/* CTA Button */}
+          <div className="hidden md:block">
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-grey hover:text-rust p-2"
+              className="text-[#444444] hover:text-[#c03a2b] p-2"
             >
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
@@ -91,16 +95,18 @@ const Navigation = () => {
         {/* Mobile Navigation */}
           {isMobileMenuOpen && (
             <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/98 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-grey hover:text-rust block px-4 py-2 text-base font-league-spartan font-bold w-full text-left transition-colors duration-200 mb-2"
+                    className="text-[#444444] hover:text-blue-600 block px-4 py-2 text-lg font-bold w-full text-left transition-colors duration-200 mb-2"
                   >
                     {item.name}
                   </button>
                 ))}
+                <div className="pt-2">
+                </div>
               </div>
             </div>
           )}

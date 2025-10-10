@@ -14,8 +14,6 @@
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			rust: 'var(--rust-color)',
-  			grey: 'var(--grey-color)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -54,9 +52,6 @@
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		},
-  		fontFamily: {
-  			'league-spartan': ['var(--font-league-spartan)', 'sans-serif'],
   		}
   	}
   },
