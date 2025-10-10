@@ -22,7 +22,7 @@ const ContactSection = () => {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Ready to get a second opinion on your architectural or interior design project? Reach out to us, and we'll help you ensure your project's success.
+            Ready to get a second opinion on your architectural or interior design project? Reach out to us, and we&apos;ll help you ensure your project&apos;s success.
           </p>
         </motion.div>
 
@@ -39,7 +39,7 @@ const ContactSection = () => {
                 <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8">
                   <h3 className="text-2xl font-bold mb-4">Get In Touch</h3>
                   <p className="opacity-90">
-                    Fill out the form, and we'll get back to you within 24 hours to discuss your project needs.
+                    Fill out the form, and we&apos;ll get back to you within 24 hours to discuss your project needs.
                   </p>
                 </div>
                 <form className="p-8">
@@ -175,7 +175,7 @@ const ContactSection = () => {
             <div className="bg-blue-50 p-8 rounded-2xl text-center">
               <h4 className="text-xl font-bold text-gray-900 mb-4">Need an immediate response?</h4>
               <p className="text-gray-600 mb-6">
-                Call us directly for urgent project consultations and we'll arrange a meeting at your earliest convenience.
+                Call us directly for urgent project consultations and we&apos;ll arrange a meeting at your earliest convenience.
               </p>
               <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                 <Phone className="h-4 w-4 mr-2" />

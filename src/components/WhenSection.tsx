@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const WhenSection = () => {
   const scenarios = [
@@ -39,17 +39,18 @@ const WhenSection = () => {
     }
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // Utility function for future use if needed
+  // const scrollToSection = (href: string) => {
+  //   const element = document.querySelector(href);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <section 
       id="when" 
-      className="relative"
+      className="relative overflow-hidden"
       style={{
         backgroundImage: "url('/images/when/bg-image.jpg')",
         backgroundSize: 'cover',
@@ -57,8 +58,13 @@ const WhenSection = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      {/* Elegant background overlay with washout effect and rust accent */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.75) 100%), radial-gradient(ellipse at top right, rgba(181,50,30,0.15) 0%, rgba(181,50,30,0.05) 45%, rgba(181,50,30,0.05) 55%, rgba(181,50,30,0.15) 100%), radial-gradient(ellipse at bottom left, rgba(181,50,30,0.12) 0%, rgba(181,50,30,0.03) 50%, rgba(255,255,255,0.08) 70%)'
+        }}
+      ></div>
       {/* Section Header */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.div
@@ -71,14 +77,11 @@ const WhenSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Title */}
             <div>
-              <h2 className="text-2xl md:text-2xl font-bold text-white mb-6" style={{ lineHeight: '120%' }}>
-                # WHEN -
-              </h2>
-              <h3 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8">
-                When to Seek a <span className="text-blue-400">Second Opinion</span>
+              <h3 className="text-4xl md:text-6xl font-league-spartan font-bold leading-tight mb-8" style={{ color: 'rgb(76,74,75)' }}>
+                When to Seek a <span style={{ color: 'rgb(181,50,30)' }}>Second Opinion</span>
               </h3>
-              <p className="text-lg text-gray-300 leading-relaxed" style={{ lineHeight: '150%', fontWeight: 400 }}>
-                A second opinion isn't just for when things go wrong—it's a smart choice at any stage of your project to ensure the best possible outcome.
+              <p className="text-lg font-league-spartan font-thin leading-relaxed" style={{ lineHeight: '150%', color: 'rgb(76,74,75)' }}>
+                A second opinion isn&apos;t just for when things go wrong—it&apos;s a smart choice at any stage of your project to ensure the best possible outcome.
               </p>
             </div>
             
@@ -92,16 +95,17 @@ const WhenSection = () => {
                 className="relative overflow-hidden group cursor-pointer"
               >
                 <div className="aspect-[4/3] relative">
-                  <img
+                  <Image
                     src="/images/when/Gemini_Generated_Image_8lrk708lrk708lrk.png"
                     alt="When to seek second opinion"
-                    className="w-full h-full object-cover transition-all duration-500"
+                    fill
+                    className="object-cover transition-all duration-500"
                   />
                   {/* Image Overlay */}
                   <div 
                     className="absolute inset-0"
                     style={{
-                      background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)"
+                      background: "linear-gradient(135deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.3) 100%)"
                     }}
                   />
                 </div>
@@ -112,7 +116,7 @@ const WhenSection = () => {
       </div>
 
       {/* Scenarios Section */}
-      <div className="relative z-10 bg-black bg-opacity-80 py-20">
+      <div className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -121,7 +125,7 @@ const WhenSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-8" style={{ lineHeight: '120%' }}>
+            <h3 className="text-3xl md:text-4xl font-league-spartan font-bold mb-8" style={{ lineHeight: '120%', color: 'rgb(76,74,75)' }}>
               Consider Engaging Opinion Chambers When:
             </h3>
           </motion.div>
@@ -135,17 +139,13 @@ const WhenSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white bg-opacity-90 p-6 border-l-4 border-blue-400 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-[1.02]"
+                className="bg-white bg-opacity-80 p-6 border-l-4 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-[1.02]"
+                style={{ borderColor: 'rgb(181,50,30)' }}
               >
-                <div className="mb-4">
-                  <span className="text-2xl font-bold text-blue-600" style={{ fontFamily: 'monospace' }}>
-                    [{index + 1}]
-                  </span>
-                </div>
-                <h4 className="font-bold text-black mb-3 text-lg" style={{ lineHeight: '130%' }}>
+                <h4 className="font-league-spartan font-bold mb-3 text-lg" style={{ lineHeight: '130%', color: 'rgb(76,74,75)' }}>
                   {scenario.title}
                 </h4>
-                <p className="text-gray-600 leading-relaxed text-sm" style={{ lineHeight: '150%', fontWeight: 400 }}>
+                <p className="font-league-spartan font-thin leading-relaxed text-sm" style={{ lineHeight: '150%', color: 'rgb(76,74,75)' }}>
                   {scenario.description}
                 </p>
               </motion.div>
@@ -163,26 +163,31 @@ const WhenSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-black text-white p-8 md:p-12" style={{ borderRadius: '0px' }}>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6" style={{ lineHeight: '130%' }}>
-              It is always good to be well informed while taking decisions that <span className="text-blue-500">MATTER</span>.
+          <div className="p-8 md:p-12 shadow-2xl" style={{ borderRadius: '0px', backgroundColor: 'rgb(240,240,240)', boxShadow: '0 20px 40px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.05)' }}>
+            <h3 className="text-2xl md:text-3xl font-league-spartan font-bold text-center" style={{ lineHeight: '130%', color: 'rgb(76,74,75)', fontStyle: 'italic', textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 0 8px rgba(181,50,30,0.2)' }}>
+              It is always good to be well informed while taking decisions that <span style={{ color: 'rgb(181,50,30)' }}>MATTER</span>.
             </h3>
-            <p className="text-lg text-gray-300 mb-8" style={{ lineHeight: '150%', fontWeight: 400 }}>
-              Don't wait for problems to arise. Get expert insights at the right time to ensure your project's success.
-            </p>
-            <button 
-              onClick={() => scrollToSection("#contact")}
-              className="px-8 py-4 bg-blue-400 text-black font-bold text-lg uppercase tracking-wider hover:bg-blue-300 transition-all duration-300 transform hover:scale-105"
-              style={{
-                borderRadius: '0px',
-                boxShadow: '0 4px 15px rgba(59,130,246,0.3)'
-              }}
-            >
-              Schedule Your Consultation
-            </button>
           </div>
         </motion.div>
       </div>
+      
+      {/* Logo positioned at bottom right */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-5 right-5"
+      >
+        <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center">
+          <Image
+            src="/images/hero/LOGO (1).jpg"
+            alt="Opinion Chambers Logo"
+            width={120}
+            height={120}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };

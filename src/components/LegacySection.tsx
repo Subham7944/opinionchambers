@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Star, Users } from "lucide-react";
+import Image from "next/image";
 
 const LegacySection = () => {
   return (
@@ -12,8 +12,8 @@ const LegacySection = () => {
         style={{ backgroundImage: `url(/images/about-us/vitaly-gariev-_4tpElFQemQ-unsplash.jpg)` }}
       />
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60" />
+      {/* Light Washed Out Overlay */}
+      <div className="absolute inset-0 bg-white bg-opacity-65" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -24,10 +24,11 @@ const LegacySection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Legacy & Leadership
-          </h2>
-          <div className="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
+          {/* LEGACY heading removed */}
+          <h3 className="text-4xl md:text-6xl font-league-spartan font-bold leading-tight mb-6" style={{ color: 'rgb(76,74,75)' }}>
+            Our <span style={{ color: 'rgb(181,50,30)' }}>Leadership</span>
+          </h3>
+          <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: 'rgb(181,50,30)' }}></div>
         </motion.div>
 
         {/* Main Content */}
@@ -38,39 +39,35 @@ const LegacySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
+            className="p-8 border-l-4 border-l-[rgb(181,50,30)]"
           >
-            <p className="text-lg text-white/90 mb-6 leading-relaxed">
+            <p className="text-lg font-league-spartan font-medium mb-6 leading-relaxed" style={{ color: '#000000' }}>
               Backed by 35+ years of multi-disciplinary expertise, our leadership has shaped award-winning projects across residential, commercial, hospitality, and institutional sectors. Opinion Chambers stands at the intersection of design intelligence, execution literacy, and client advocacy. We are committed to:
             </p>
             
             <ul className="space-y-4 mb-8">
               <li className="flex items-start">
-                <span className="text-blue-400 mr-2 mt-1">•</span>
-                <span className="text-white/90">
-                  <span className="font-semibold text-white">Unbiased Advice</span> – no vendor influence, only your interests.
+                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
+                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Unbiased Advice</span> – no vendor influence, only your interests.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-blue-400 mr-2 mt-1">•</span>
-                <span className="text-white/90">
-                  <span className="font-semibold text-white">Clarity Before Concrete</span> – critical checks at the right stage.
+                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
+                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Clarity Before Concrete</span> – critical checks at the right stage.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-blue-400 mr-2 mt-1">•</span>
-                <span className="text-white/90">
-                  <span className="font-semibold text-white">Real-World Assurance</span> – what works, not just in renders.
+                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
+                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Real-World Assurance</span> – what works, not just in renders.
                 </span>
               </li>
             </ul>
             
-            <p className="text-lg text-white/90 mb-8 leading-relaxed">
-              At the heart of Opinion Chambers is a belief that experience is the sharpest filter against error. Leading our practice is <span className="text-blue-400 font-semibold">Ar.(Dr.) Atul Gupta</span>, an architect with over three decades of professional expertise and a reputation for balancing vision with pragmatism. A Fellow of the Indian Institute of Architects (FIIA), having an exposure of working with various Professional Bodies, Architect Atul Gupta brings a rare blend of design intelligence, technical depth, and sustainability awareness.
-            </p>
-            
-            <p className="text-lg text-white/90 leading-relaxed">
-              His career is marked by leadership roles within the profession, from serving on various professional bodies, mentoring the next generation of architects, and winning a number of Design Competitions, Acclamations & Awards.
+            <p className="text-lg font-league-spartan font-medium mb-8 leading-relaxed" style={{ color: '#000000' }}>
+              At the heart of Opinion Chambers is a belief that experience is the sharpest filter against error. Leading our practice is <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Ar. Atul Gupta</span>, an architect with over three decades of professional expertise and a reputation for balancing vision with pragmatism. A Fellow of the Indian Institute of Architects (FIIA), having an exposure of working with various Professional Bodies, Ar. Atul Gupta brings a rare blend of design intelligence, technical depth, and sustainability awareness.
             </p>
           </motion.div>
 
@@ -80,64 +77,103 @@ const LegacySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800"
+            className="relative mt-8 flex flex-col items-center justify-center"
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8 text-center">
-              <Award className="h-20 w-20 mb-6" />
-              <h3 className="text-3xl font-bold mb-4">35+ Years of Excellence</h3>
-              <p className="text-lg opacity-90 mb-8">
-                A legacy of architectural expertise and unwavering commitment to quality
+            <div className="relative w-3/4 mx-auto rounded-lg overflow-hidden shadow-xl border-4 flex justify-center items-center" style={{ borderColor: 'rgba(181,50,30,0.2)' }}>
+              <Image
+                src="/images/about-us/atul gupta.jpg"
+                alt="Ar. Atul Gupta"
+                width={400}
+                height={500}
+                className="rounded-lg"
+                style={{ maxHeight: '400px', margin: '0 auto' }}
+                priority
+              />
+            </div>
+            <div className="mt-6 text-center">
+              <h3 className="text-2xl font-league-spartan font-bold mb-2" style={{ color: 'rgb(76,74,75)' }}>Architect (Dr.) Atul Gupta</h3>
+              <p className="text-lg font-league-spartan font-thin" style={{ color: 'rgb(76,74,75)' }}>
+                <span className="font-medium">Founder</span>, <span style={{ color: 'rgb(181,50,30)' }}>Opinion Chambers</span>
               </p>
-              <div className="flex items-center">
-                <Star className="h-6 w-6 text-yellow-300 mr-2" />
-                <span className="text-xl font-semibold">Experience Does Matter.</span>
-              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Team Section */}
+        {/* Career Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/20">
-            <div className="flex items-center justify-center mb-8">
-              <Users className="h-10 w-10 text-blue-400 mr-4" />
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                Our Team: Your Advantage
-              </h3>
-            </div>
+          <div className="bg-white/40 backdrop-blur-sm rounded-lg p-8 md:p-10 border border-[rgb(181,50,30)]/20 shadow-lg">
+            <h3 className="text-2xl md:text-3xl font-league-spartan font-bold mb-8" style={{ color: 'rgb(76,74,75)' }}>
+              Professional <span style={{ color: 'rgb(181,50,30)' }}>Achievements</span>
+            </h3>
 
-            <p className="text-lg text-white/90 mb-8 leading-relaxed text-center">
-              We bring in diverse skill sets and deep industry knowledge to deliver clarity, precision, and value at every stage of your project. We are:
+            <p className="text-lg font-league-spartan font-medium mb-8 leading-relaxed" style={{ color: '#000000' }}>
+              His career is marked by leadership roles within the profession, from serving on Council of Architecture panels to guiding professional bodies, mentoring the next generation of architects, and winning a number of Design Competitions, Acclamations & Awards.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h4 className="font-semibold text-white mb-3 text-lg">Experienced in all scales</h4>
-                <p className="text-white/80">From compact residential spaces to large-scale commercial developments</p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white/80 rounded-lg p-6 border border-gray-100 shadow-md hover:shadow-lg transition-shadow">
+                <h4 className="font-league-spartan font-bold mb-3 text-lg" style={{ color: 'rgb(76,74,75)' }}>Design Excellence</h4>
+                <p className="font-league-spartan font-medium" style={{ color: '#000000' }}>Award-winning architectural solutions across multiple sectors and scales</p>
               </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h4 className="font-semibold text-white mb-3 text-lg">Detail-oriented</h4>
-                <p className="text-white/80">We meticulously review drawings, specifications, and on-site execution</p>
+              <div className="bg-white/80 rounded-lg p-6 border border-gray-100 shadow-md hover:shadow-lg transition-shadow">
+                <h4 className="font-league-spartan font-bold mb-3 text-lg" style={{ color: 'rgb(76,74,75)' }}>Professional Leadership</h4>
+                <p className="font-league-spartan font-medium" style={{ color: '#000000' }}>Active roles in architectural councils and educational institutions</p>
               </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h4 className="font-semibold text-white mb-3 text-lg">Client-focused</h4>
-                <p className="text-white/80">Every decision is rooted in understanding your vision and priorities</p>
+              <div className="bg-white/80 rounded-lg p-6 border border-gray-100 shadow-md hover:shadow-lg transition-shadow">
+                <h4 className="font-league-spartan font-bold mb-3 text-lg" style={{ color: 'rgb(76,74,75)' }}>Industry Recognition</h4>
+                <p className="font-league-spartan font-medium" style={{ color: '#000000' }}>Acknowledged expertise in sustainable design and technical execution</p>
               </div>
             </div>
             
-            <div className="text-center mt-8 bg-blue-500/20 rounded-xl p-6 border border-blue-400/30">
-              <p className="text-xl text-blue-300 font-semibold leading-relaxed">
-                With Opinion Chambers, you gain not just a second opinion, but a strategic partner committed to making your project the best it can be.
+            <div className="text-center mt-10 rounded-lg p-6 border border-[rgb(181,50,30)]/20 bg-[rgb(181,50,30)]/10">
+              <p className="text-xl font-league-spartan font-bold leading-relaxed" style={{ color: 'rgb(76,74,75)' }}>
+                With Opinion Chambers, you gain not just a second opinion, but a <span style={{ color: 'rgb(181,50,30)' }}>strategic partner</span> committed to making your project the best it can be.
               </p>
             </div>
           </div>
         </motion.div>
+        
+        {/* Slogan Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="relative mt-16 mb-8 text-center"
+        >
+          <h3 
+            className="text-3xl md:text-4xl font-league-spartan font-bold italic" 
+            style={{ 
+              color: 'rgb(76,74,75)', 
+              lineHeight: '130%',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 0 8px rgba(181,50,30,0.2)'
+            }}
+          >
+            <span style={{ color: 'rgb(181,50,30)' }}>Experience</span> Does <span style={{ color: 'rgb(181,50,30)' }}>Matter</span>.
+          </h3>
+        </motion.div>
       </div>
+      <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute bottom-5 right-5"
+            >
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center">
+                <Image
+                  src="/images/hero/LOGO (1).jpg"
+                  alt="Opinion Chambers Logo"
+                  width={120}
+                  height={120}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </motion.div>
     </section>
   );
 };

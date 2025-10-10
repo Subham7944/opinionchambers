@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,12 +46,15 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20 py-2">
           <div className="flex-shrink-0">
             <a href="#" className="flex items-center py-1" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-              <img 
-                src="/images/openion-chamber-logo.jpg" 
-                alt="Opinion Chambers Logo" 
-                className="h-12 md:h-16"
-                style={{ maxWidth: '280px', objectFit: 'contain' }}
-              />
+              <div className="relative h-12 md:h-16 w-[280px]">
+                <Image 
+                  src="/images/header/logo main.jpg" 
+                  alt="Opinion Chambers Logo" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </a>
           </div>
 
@@ -72,12 +75,6 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
-            >
-              Get Consultation
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -109,12 +106,6 @@ const Navigation = () => {
                   </button>
                 ))}
                 <div className="pt-2">
-                  <Button
-                    onClick={() => scrollToSection("#contact")}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    Get Consultation
-                  </Button>
                 </div>
               </div>
             </div>

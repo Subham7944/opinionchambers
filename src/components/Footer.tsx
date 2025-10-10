@@ -1,15 +1,9 @@
 "use client";
 
-import { Facebook, Instagram, Twitter, Linkedin, ArrowUp } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
 
   const currentYear = new Date().getFullYear();
 
@@ -108,15 +102,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Scroll to Top Button */}
-        <motion.button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ArrowUp className="h-5 w-5" />
-        </motion.button>
       </div>
     </footer>
   );
