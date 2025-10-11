@@ -9,7 +9,7 @@ const LegacySection = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(/images/about-us/vitaly-gariev-_4tpElFQemQ-unsplash.jpg)` }}
+        style={{ filter: "grayscale(100%)", backgroundImage: `url(/images/about-us/legacy.jpg)` }}
       />
       
       {/* Light Washed Out Overlay */}
@@ -26,9 +26,9 @@ const LegacySection = () => {
         >
           {/* LEGACY heading removed */}
           <h3 className="text-4xl md:text-6xl font-league-spartan font-bold leading-tight mb-6" style={{ color: 'rgb(76,74,75)' }}>
-            Our <span style={{ color: 'rgb(181,50,30)' }}>Leadership</span>
+            Our Leadership
           </h3>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: 'rgb(181,50,30)' }}></div>
+          <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: 'rgb(76,74,75)' }}></div>
         </motion.div>
 
         {/* Main Content */}
@@ -41,33 +41,33 @@ const LegacySection = () => {
             viewport={{ once: true }}
             className="p-8 border-l-4 border-l-[rgb(181,50,30)]"
           >
-            <p className="text-lg font-league-spartan font-medium mb-6 leading-relaxed" style={{ color: '#000000' }}>
+            <p className="text-lg font-league-spartan font-medium mb-6 leading-relaxed" style={{ color: 'rgb(76,74,75)' }}>
               Backed by 35+ years of multi-disciplinary expertise, our leadership has shaped award-winning projects across residential, commercial, hospitality, and institutional sectors. Opinion Chambers stands at the intersection of design intelligence, execution literacy, and client advocacy. We are committed to:
             </p>
             
             <ul className="space-y-4 mb-8">
               <li className="flex items-start">
-                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
-                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
-                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Unbiased Advice</span> – no vendor influence, only your interests.
+                <span className="mr-2 mt-1" style={{ color: '#000000' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>
+                  <span className="font-bold" style={{ color: '#000000' }}>Unbiased Advice</span> – no vendor influence, only your interests.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
-                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
-                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Clarity Before Concrete</span> – critical checks at the right stage.
+                <span className="mr-2 mt-1" style={{ color: '#000000' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>
+                  <span className="font-bold" style={{ color: '#000000' }}>Clarity Before Concrete</span> – critical checks at the right stage.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="mr-2 mt-1" style={{ color: 'rgb(181,50,30)' }}>•</span>
-                <span className="font-league-spartan font-medium" style={{ color: '#000000' }}>
-                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Real-World Assurance</span> – what works, not just in renders.
+                <span className="mr-2 mt-1" style={{ color: '#000000' }}>•</span>
+                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>
+                  <span className="font-bold" style={{ color: '#000000' }}>Real-World Assurance</span> – what works, not just in renders.
                 </span>
               </li>
             </ul>
             
-            <p className="text-lg font-league-spartan font-medium mb-8 leading-relaxed" style={{ color: '#000000' }}>
-              At the heart of Opinion Chambers is a belief that experience is the sharpest filter against error. Leading our practice is <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>Ar. Atul Gupta</span>, an architect with over three decades of professional expertise and a reputation for balancing vision with pragmatism. A Fellow of the Indian Institute of Architects (FIIA), having an exposure of working with various Professional Bodies, Ar. Atul Gupta brings a rare blend of design intelligence, technical depth, and sustainability awareness.
+            <p className="text-lg font-league-spartan font-medium mb-8 leading-relaxed" style={{ color: 'rgb(76,74,75)' }}>
+              At the heart of Opinion Chambers is a belief that experience is the sharpest filter against error. Leading our practice is Ar. Atul Gupta, an architect with over three decades of professional expertise and a reputation for balancing vision with pragmatism. A Fellow of the Indian Institute of Architects (FIIA), having an exposure of working with various Professional Bodies, Ar. Atul Gupta brings a rare blend of design intelligence, technical depth, and sustainability awareness.
             </p>
           </motion.div>
 
@@ -79,21 +79,21 @@ const LegacySection = () => {
             viewport={{ once: true }}
             className="relative mt-8 flex flex-col items-center justify-center"
           >
-            <div className="relative w-3/4 mx-auto rounded-lg overflow-hidden shadow-xl border-4 flex justify-center items-center" style={{ borderColor: 'rgba(181,50,30,0.2)' }}>
+            <div className="relative w-3/4 mx-auto rounded-lg overflow-hidden flex justify-center items-center">
               <Image
                 src="/images/about-us/atul gupta.jpg"
                 alt="Ar. Atul Gupta"
                 width={400}
-                height={500}
+                height={400}
                 className="rounded-lg"
-                style={{ maxHeight: '400px', margin: '0 auto' }}
+                style={{ maxHeight: '400px', margin: '0 auto', objectFit: 'contain', filter: 'grayscale(100%)' }}
                 priority
               />
             </div>
             <div className="mt-6 text-center">
               <h3 className="text-2xl font-league-spartan font-bold mb-2" style={{ color: 'rgb(76,74,75)' }}>Architect (Dr.) Atul Gupta</h3>
               <p className="text-lg font-league-spartan font-thin" style={{ color: 'rgb(76,74,75)' }}>
-                <span className="font-medium">Founder</span>, <span style={{ color: 'rgb(181,50,30)' }}>Opinion Chambers</span>
+                <span className="font-medium">Founder, Opinion Chambers</span>
               </p>
             </div>
           </motion.div>
@@ -108,7 +108,7 @@ const LegacySection = () => {
         >
           <div className="bg-white/40 backdrop-blur-sm rounded-lg p-8 md:p-10 border border-[rgb(181,50,30)]/20 shadow-lg">
             <h3 className="text-2xl md:text-3xl font-league-spartan font-bold mb-8" style={{ color: 'rgb(76,74,75)' }}>
-              Professional <span style={{ color: 'rgb(181,50,30)' }}>Achievements</span>
+              Professional Achievements
             </h3>
 
             <p className="text-lg font-league-spartan font-medium mb-8 leading-relaxed" style={{ color: '#000000' }}>
@@ -132,7 +132,7 @@ const LegacySection = () => {
             
             <div className="text-center mt-10 rounded-lg p-6 border border-[rgb(181,50,30)]/20 bg-[rgb(181,50,30)]/10">
               <p className="text-xl font-league-spartan font-bold leading-relaxed" style={{ color: 'rgb(76,74,75)' }}>
-                With Opinion Chambers, you gain not just a second opinion, but a <span style={{ color: 'rgb(181,50,30)' }}>strategic partner</span> committed to making your project the best it can be.
+                With Opinion Chambers, you gain not just a second opinion, but a <span style={{ color: 'rgb(0,0,0)' }}>strategic partner</span> committed to making your project the best it can be.
               </p>
             </div>
           </div>
@@ -151,10 +151,10 @@ const LegacySection = () => {
             style={{ 
               color: 'rgb(76,74,75)', 
               lineHeight: '130%',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 0 8px rgba(181,50,30,0.2)'
+              textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2)'
             }}
           >
-            <span style={{ color: 'rgb(181,50,30)' }}>Experience</span> Does <span style={{ color: 'rgb(181,50,30)' }}>Matter</span>.
+            Experience Does Matter.
           </h3>
         </motion.div>
       </div>
