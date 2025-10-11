@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import BlurText from "./ui/BlurText";
 import Image from "next/image";
-import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
+import { NormalCardBody, NormalCardTitle, NormalCardSubtitle, NormalCardImage, NormalCardLogo } from "./ui/normal-card";
 
 const WhatSection = () => {
   const sections = [
@@ -40,8 +40,8 @@ const WhatSection = () => {
         className="absolute inset-0 bg-cover bg-center z-0" 
         style={{ 
           backgroundImage: 'url(/images/what/what-bg1.jpg)',
-          opacity: 0.8,  /* Increased opacity for more visibility */
-          filter: 'brightness(1.1) contrast(1.1)'
+          opacity: 0.6,  /* Increased opacity for more visibility */
+          filter: "grayscale(100%) contrast(1.05) brightness(1.05)",
         }}
       ></div>
       
@@ -49,7 +49,7 @@ const WhatSection = () => {
       <div 
         className="absolute inset-0 z-0" 
         style={{ 
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.4) 100%)'
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.6) 100%)'
         }}
       ></div>
       {/* Section Header with Blur Background */}
@@ -76,9 +76,9 @@ const WhatSection = () => {
               <div className="mt-6 max-w-xl">
                 <p className="text-lg font-league-spartan leading-relaxed mb-4 relative pl-4 border-l-2" 
                    style={{ lineHeight: '150%', color: '#000000', fontWeight: 500, borderColor: 'rgba(181,50,30,0.5)' }}>
-                  Whether it is a <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>new build</span>, {" "}
-                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>renovation</span>, or {" "}
-                  <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>interior work</span>, {" "}
+                  Whether it is a <span className="font-bold" style={{ color: 'rgb(76,74,75)' }}>new build</span>, {" "}
+                  <span className="font-bold" style={{ color: 'rgb(76,74,75)' }}>renovation</span>, or {" "}
+                  <span className="font-bold" style={{ color: 'rgb(76,74,75)' }}>interior work</span>, {" "}
                   we help you with our insights.
                 </p>
                 <p className="text-lg font-league-spartan leading-relaxed relative pl-4 border-l-2" 
@@ -94,14 +94,14 @@ const WhatSection = () => {
           {/* Right Column - Description */}
           <div className="md:w-1/2 pt-12 md:pt-8 pl-0 md:pl-8">
             <div className="pl-4">
-            <h4 className="text-2xl font-league-spartan font-bold mb-6" style={{ lineHeight: '130%', color: 'rgb(76,74,75)' }}>
+            <h4 className="text-3xl font-league-spartan font-bold mb-6" style={{ lineHeight: '130%', color: 'rgb(76,74,75)' }}>
               Second Opinion: A Fresh Perspective for Your Project&apos;s Success
             </h4>
             <p className="text-lg font-league-spartan leading-relaxed mb-6" style={{ lineHeight: '150%', color: 'rgb(76,74,75)', fontWeight: 500 }}>
               A Second Opinion Consultation is more than just a review—it&apos;s a strategic checkpoint to ensure your architectural or interior design project is on the right track. With an independent, unbiased perspective, we evaluate your plans and ideas against functionality, aesthetics, and quality benchmarks, while keeping your goals at the center.
             </p>
             <p className="text-lg font-league-spartan leading-relaxed" style={{ lineHeight: '150%', color: 'rgb(76,74,75)', fontWeight: 500 }}>
-              Most projects look flawless on paper, but once construction begins, time, money, and quality often slip away. <span className="font-bold" style={{ color: 'rgb(181,50,30)' }}>We exist to make sure that doesn&apos;t happen.</span>
+              Most projects look flawless on paper, but once construction begins, time, money, and quality often slip away. <span className="font-bold" style={{ color: 'rgb(76,74,75)' }}>We exist to make sure that doesn&apos;t happen.</span>
             </p>
             </div>
           </div>
@@ -124,7 +124,7 @@ const WhatSection = () => {
               textShadow: '2px 2px 6px rgba(0,0,0,0.25)'
             }}
           >
-            We provide <span style={{ color: 'rgb(181,50,30)' }}>Customised Project Specific Opinions</span>
+            We provide Customised Project Specific Opinions
           </h2>
           
           {/* Fading underline effect */}
@@ -153,66 +153,27 @@ const WhatSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: section.id * 0.1 }}
               >
-                <CardContainer className="inter-var">
-                  <CardBody className="relative group/card bg-white/90 dark:hover:shadow-2xl dark:hover:shadow-rust/[0.1] border-black/[0.1] w-full h-[380px] rounded-xl p-6 border shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <CardItem
-                      translateZ="50"
-                      className="text-xl font-bold text-neutral-700 dark:text-white font-league-spartan"
-                      style={{ color: 'rgb(76,74,75)' }}
-                    >
-                      {section.title}
-                    </CardItem>
-                    
-                    <CardItem
-                      as="p"
-                      translateZ="60"
-                      className="text-sm uppercase tracking-wider font-league-spartan font-medium mt-2"
-                      style={{ color: 'rgb(181,50,30)' }}
-                    >
-                      {section.subtitle}
-                    </CardItem>
-                    
-                    <CardItem
-                      translateZ="100"
-                      rotateX={5}
-                      rotateZ={-5}
-                      className="w-full mt-6"
-                    >
-                      <div className="relative h-48 w-full rounded-xl overflow-hidden group-hover/card:shadow-xl">
-                        <Image
-                          src={section.image}
-                          alt={section.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </CardItem>
-                    
-                    <div className="flex justify-between items-center mt-6">
-                      {/* Our Goal Text */}
-                      <CardItem
-                        translateZ={20}
-                        translateX={5}
-                      >
-                        <span className="font-bold italic text-lg" style={{ color: 'rgb(181,50,30)' }}>our goal</span>
-                      </CardItem>
-                      
-                      {/* Logo */}
-                      <CardItem
-                        translateZ={20}
-                        translateX={-5}
-                      >
-                        <Image 
-                          src="/images/2nd logo small.png"
-                          alt="Opinion Chambers Logo"
-                          width={40}
-                          height={40}
-                          className="shadow-md"
-                        />
-                      </CardItem>
-                    </div>
-                  </CardBody>
-                </CardContainer>
+                <NormalCardBody>
+                  <NormalCardTitle>
+                    {section.title}
+                  </NormalCardTitle>
+                  
+                  <NormalCardSubtitle>
+                    {section.subtitle}
+                  </NormalCardSubtitle>
+                  
+                  <NormalCardImage
+                    src={section.image}
+                    alt={section.title}
+                  />
+                  
+                  <NormalCardLogo
+                    src="/images/2nd logo small.png"
+                    alt="Opinion Chambers Logo"
+                    width={40}
+                    height={40}
+                  />
+                </NormalCardBody>
               </motion.div>
             ))}
           </div>
@@ -247,7 +208,7 @@ const WhatSection = () => {
               </div>
             </div>
             <div>
-              <p className="text-3xl font-league-spartan font-bold italic mb-2" style={{ color: 'rgb(181,50,30)' }}>
+              <p className="text-3xl font-league-spartan font-bold italic mb-2" style={{ color: 'rgb(76,74,75)' }}>
                 WE ADD VALUE.
               </p>
             </div>
