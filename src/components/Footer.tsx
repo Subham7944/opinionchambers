@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Column 1 - Logo and About */}
           <div className="col-span-2">
-            <h2 className="text-2xl font-bold mb-4 text-blue-400">
+            <h2 className="text-2xl font-bold mb-4" style={{ color: 'rgb(181,50,30)' }}>
               Opinion Chambers
             </h2>
             <p className="text-gray-400 mb-6 max-w-md">

@@ -2,8 +2,33 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const WhySection = () => {
+  // Only used for mobile view toggle
+  const [showAllCards, setShowAllCards] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Handle window resize to ensure proper display
+  useEffect(() => {
+    // Check if we're in the browser environment
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const desktop = window.innerWidth >= 768;
+        setIsDesktop(desktop);
+        if (desktop && !showAllCards) {
+          // Don't need to toggle if on desktop
+          setShowAllCards(true);
+        }
+      };
+
+      // Set initial state based on screen size
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [showAllCards]);
+
   const allSteps = [
     {
       number: "[1]",
@@ -67,11 +92,11 @@ const WhySection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
             {/* Left Column - Title and Hidden Cost */}
             <div>
               <h3
-                className="pt-4 text-4xl md:text-6xl font-league-spartan font-bold leading-tight mb-8"
+                className="pt-4 text-3xl md:text-6xl font-league-spartan font-bold leading-tight mb-6 md:mb-8 px-1 md:px-0"
                 style={{ color: "#000000" }}
               >
                 Why a Second Opinion Matters
@@ -79,23 +104,23 @@ const WhySection = () => {
 
               {/* Hidden Cost ofOverconfidence Section */}
               <div
-                className="relative p-8 border-l-4 bg-white/80 rounded-lg shadow-lg mb-4"
+                className="relative p-5 md:p-8 border-l-4 bg-white/80 rounded-lg shadow-lg mb-6 mx-1 md:mx-0"
                 style={{ borderColor: "rgb(181,50,30)" }}
               >
                 <h4
-                  className="text-2xl font-league-spartan font-bold mb-4"
+                  className="text-xl md:text-2xl font-league-spartan font-bold mb-4"
                   style={{ color: "rgb(76,74,75)", lineHeight: "120%" }}
                 >
                   The Hidden Cost of Overconfidence
                 </h4>
                 <p
-                  className="text-lg font-league-spartan font-thin leading-relaxed"
+                  className="text-sm md:text-lg font-league-spartan font-thin leading-relaxed"
                   style={{ lineHeight: "160%", color: "#000000" }}
                 >
                   In design and construction, what looks perfect on paper can
                   unravel on site. Drawings clash, materials fail, budgets
-                  inflate, and deadlines slip. By the time issues surface, it&apos;s
-                  too late, the cost of rework far exceeds the cost of
+                  inflate, and deadlines slip. By the time issues surface,
+                  it&apos;s too late, the cost of rework far exceeds the cost of
                   prevention.
                 </p>
               </div>
@@ -103,9 +128,9 @@ const WhySection = () => {
 
             {/* Right Column - Text Content */}
             <div>
-              <div className="pt-8">
+              <div className="pt-6 md:pt-8 px-3 md:px-0">
                 <p
-                  className="text-lg font-league-spartan font-thin leading-relaxed"
+                  className="text-sm md:text-lg font-league-spartan font-thin leading-relaxed mb-6 md:mb-4"
                   style={{ lineHeight: "160%", color: "#000000" }}
                 >
                   Our approach blends{" "}
@@ -127,7 +152,7 @@ const WhySection = () => {
                 </p>
 
                 <p
-                  className="text-lg font-league-spartan font-thin leading-relaxed"
+                  className="text-sm md:text-lg font-league-spartan font-thin leading-relaxed mb-6 md:mb-4"
                   style={{ lineHeight: "160%", color: "#000000" }}
                 >
                   Whether you need{" "}
@@ -159,18 +184,15 @@ const WhySection = () => {
                 </p>
 
                 <div
-                  className="pl-4 border-l-2"
+                  className="pl-3 md:pl-4 border-l-2 mt-8 md:mt-6 bg-white/40 py-4 px-2 md:px-0 md:py-0 rounded-r-lg"
                   style={{ borderColor: "rgb(181,50,30)" }}
                 >
                   <p
-                    className="text-lg font-league-spartan font-medium italic leading-relaxed"
+                    className="text-xs md:text-lg font-league-spartan font-medium italic leading-relaxed drop-shadow-sm"
                     style={{ lineHeight: "160%", color: "rgb(76,74,75)" }}
                   >
                     The result - A project that not only meets expectations but{" "}
-                    <span style={{ color: "rgb(76,74,75)" }}>
-                      exceeds them
-                    </span>
-                    —delivered with confidence, efficiency, and style and within
+                    exceeds them - delivered with confidence, efficiency, and style and within
                     the time frame. Your vision deserves to be realized in the
                     best possible way. A fresh set of expert eyes can make all
                     the difference.
@@ -259,7 +281,7 @@ const WhySection = () => {
       </div>
 
       {/* The Opinion Chambers Advantage Section - Full Width with Semi-transparent Background */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-20 py-20 bg-white/60">
+      <div className="relative z-10 w-full px-2 sm:px-6 lg:px-20 py-10 sm:py-20 bg-white/60">
         <div className="relative z-10">
           {/* Left Column - Content with blur effect */}
           <motion.div
@@ -267,217 +289,258 @@ const WhySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative p-10 mx-auto max-w-6xl"
+            className="relative p-4 sm:p-10 mx-auto max-w-6xl"
           >
             {/* Blur effect background - only behind text content */}
             {/* Glass background removed */}
             <div className="relative z-10">
-            <h2
-              className="text-3xl md:text-5xl font-league-spartan font-bold mb-8 text-center"
-              style={{ color: "#000000", letterSpacing: "0.01em" }}
-            >
-              The Opinion Chambers Advantage
-            </h2>
-
-            <p
-              className="text-lg font-league-spartan mb-10 leading-relaxed text-center mx-auto max-w-3xl"
-              style={{ color: "rgb(60,60,60)", lineHeight: "1.8", fontWeight: 400 }}
-            >
-              Choosing Opinion Chambers means gaining more than a second
-              opinion—you gain a partner dedicated to elevating your project&apos;s
-              success. Our expertise ensures your ideas are transformed into
-              results that are beautiful, functional, and cost-effective.
-            </p>
-            
-            <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-10"></div>
-
-            <div className="text-center mb-10">
-              <h3
-                className="text-2xl font-league-spartan font-medium mb-4"
-                style={{ color: "rgb(76,74,75)" }}
+              <h2
+                className="text-2xl md:text-5xl font-league-spartan font-bold mb-6 md:mb-8 text-center"
+                style={{ color: "#000000", letterSpacing: "0.01em" }}
               >
-                Why Partner With Us
-              </h3>
-            </div>
+                The Opinion Chambers Advantage
+              </h2>
 
-            {/* First row - 4 items */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-2"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Fresh Creative Perspectives
-                  </h4>
+              <p
+                className="text-base md:text-lg font-league-spartan mb-6 md:mb-10 leading-relaxed text-center mx-auto max-w-3xl px-0 sm:px-4"
+                style={{
+                  color: "rgb(60,60,60)",
+                  lineHeight: "1.6",
+                  fontWeight: 400,
+                }}
+              >
+                Choosing Opinion Chambers means gaining more than a second
+                opinion—you gain a partner dedicated to elevating your
+                project&apos;s success. Our expertise ensures your ideas are
+                transformed into results that are beautiful, functional, and
+                cost-effective.
+              </p>
+
+              <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-6 md:mb-10"></div>
+
+              <div className="text-center mb-6 md:mb-10">
+                <h3
+                  className="text-2xl font-league-spartan font-medium mb-4"
+                  style={{ color: "rgb(76,74,75)" }}
+                >
+                  Why Partner With Us
+                </h3>
+              </div>
+
+              {/* First row - always visible items (4 on all screens) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-6 md:mb-8">
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-2"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "#000000" }}
+                    >
+                      Fresh Creative Perspectives
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "rgb(76,74,75)", lineHeight: "150%" }}
+                    >
+                      Bringing new ideas and design insights that enhance your
+                      project&apos;s potential.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Bringing new ideas and design insights that enhance your
-                    project&apos;s potential.
-                  </p>
+
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-2"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "#000000" }}
+                    >
+                      Early Detection of Potential Issues
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "rgb(76,74,75)", lineHeight: "150%" }}
+                    >
+                      Identifying challenges before they escalate, saving time,
+                      money, and effort.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-2"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "#000000" }}
+                    >
+                      Alternative Layouts and Design Solutions
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "rgb(76,74,75)", lineHeight: "150%" }}
+                    >
+                      Offering multiple approaches to achieve the best balance
+                      of aesthetics, functionality, and efficiency.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-2"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "#000000" }}
+                    >
+                      Expertise That Minimizes Costly Errors
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "rgb(76,74,75)", lineHeight: "150%" }}
+                    >
+                      Drawing from decades of professional experience to prevent
+                      mistakes and ensure smooth execution.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-2"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Early Detection of Potential Issues
-                  </h4>
+              {/* Second row - 3 items (always visible on desktop, toggleable on mobile) */}
+              <motion.div
+                initial={{ opacity: 1, height: "auto" }}
+                animate={{
+                  opacity: showAllCards || isDesktop ? 1 : 0,
+                  height: showAllCards || isDesktop ? "auto" : 0,
+                }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-6 md:mb-8 overflow-hidden"
+              >
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-0"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "rgb(76,74,75)" }}
+                    >
+                      Budget-Friendly Planning
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "#000000", lineHeight: "150%" }}
+                    >
+                      Helping you make smart financial decisions without
+                      compromising quality or style.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Identifying challenges before they escalate, saving time,
-                    money, and effort.
-                  </p>
-                </div>
-              </div>
 
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-2"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Alternative Layouts and Design Solutions
-                  </h4>
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-0"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "rgb(76,74,75)" }}
+                    >
+                      Optimized Resource Use
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "#000000", lineHeight: "150%" }}
+                    >
+                      Maximizing the value of time, materials, and manpower for
+                      efficient project delivery.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Offering multiple approaches to achieve the best balance
-                    of aesthetics, functionality, and efficiency.
-                  </p>
-                </div>
-              </div>
 
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-2"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Expertise That Minimizes Costly Errors
-                  </h4>
+                <div className="bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
+                  <div className="mb-4 relative">
+                    <Image
+                      src="/images/Only 2.png"
+                      alt="Opinion Chambers Logo"
+                      width={28}
+                      height={28}
+                      className="absolute -left-2 top-0"
+                    />
+                    <h4
+                      className="font-league-spartan font-bold text-sm md:text-md pl-5 md:pl-6"
+                      style={{ color: "rgb(76,74,75)" }}
+                    >
+                      Superior End Results
+                    </h4>
+                  </div>
+                  <div className="flex-grow">
+                    <p
+                      className="font-league-spartan font-thin text-xs md:text-sm"
+                      style={{ color: "#000000", lineHeight: "150%" }}
+                    >
+                      Ensuring the final outcome not only meets but exceeds your
+                      expectations.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Drawing from decades of professional experience to prevent
-                    mistakes and ensure smooth execution.
-                  </p>
-                </div>
-              </div>
+              </motion.div>
 
-            </div>
-            
-            {/* Second row - 3 items */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-0"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Budget-Friendly Planning
-                  </h4>
-                </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Helping you make smart financial decisions without
-                    compromising quality or style.
-                  </p>
-                </div>
+              {/* Read More Button - Only visible on mobile */}
+              <div className="md:hidden flex justify-center mt-4 mb-6">
+                <button
+                  onClick={() => setShowAllCards(!showAllCards)}
+                  className="border-2 border-[rgb(181,50,30)] text-[rgb(181,50,30)] hover:bg-[rgb(181,50,30)] hover:text-white font-league-spartan py-2 px-8 transition-colors duration-300 text-sm tracking-wide"
+                >
+                  {showAllCards ? "READ LESS" : "READ MORE"}
+                </button>
               </div>
-
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-0"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Optimized Resource Use
-                  </h4>
-                </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Maximizing the value of time, materials, and manpower for
-                    efficient project delivery.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 aspect-auto h-full flex flex-col">
-                <div className="mb-4 relative">
-                  <Image
-                    src="/images/Only 2.png"
-                    alt="Opinion Chambers Logo"
-                    width={28}
-                    height={28}
-                    className="absolute -left-2 top-0"
-                  />
-                  <h4
-                    className="font-league-spartan font-bold text-md pl-6"
-                    style={{ color: "rgb(76,74,75)" }}
-                  >
-                    Superior End Results
-                  </h4>
-                </div>
-                <div className="flex-grow">
-                  <p className="font-league-spartan font-thin text-sm" style={{ color: "#000000", lineHeight: "150%" }}>
-                    Ensuring the final outcome not only meets but exceeds your
-                    expectations.
-                  </p>
-                </div>
-              </div>
-            </div>
             </div>
           </motion.div>
-
-
         </div>
       </div>
 

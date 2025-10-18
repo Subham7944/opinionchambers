@@ -1,10 +1,22 @@
 "use client";
 
-import { FileSearch, Lightbulb, Shield, TrendingUp } from "lucide-react";
+import { FileSearch, Lightbulb, Shield, TrendingUp, Plus, Minus } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 
 const HowSection = () => {
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
+  
+  const toggleCard = (index: number) => {
+    if (expandedCards.includes(index)) {
+      setExpandedCards(expandedCards.filter(i => i !== index));
+    } else {
+      setExpandedCards([...expandedCards, index]);
+    }
+  };
+  
+  const isCardExpanded = (index: number) => expandedCards.includes(index);
   const methods = [
     {
       icon: <FileSearch className="h-12 w-12" style={{ color: 'rgb(76,74,75)' }} />,
@@ -85,25 +97,25 @@ const HowSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Title */}
             <div>
-              <h3 className="text-4xl md:text-6xl font-league-spartan font-bold leading-tight pt-24 pl-4" style={{ color: 'rgb(0,0,0)' }}>
+              <h3 className="text-3xl md:text-6xl font-league-spartan font-bold leading-tight pt-16 md:pt-24 text-center md:text-left md:pl-4" style={{ color: 'rgb(0,0,0)' }}>
                 Our Approach
               </h3>
             </div>
             
             {/* Right Column - Description with increased opacity */}
-            <div className="relative p-8 border-l-4 bg-white/95 rounded-lg shadow-lg mb-4" style={{ borderColor: 'rgb(181,50,30)', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-              <h4 className="text-2xl font-league-spartan font-bold mb-6" style={{ lineHeight: '130%', color: '#000000' }}>
+            <div className="relative p-5 md:p-8 border-l-4 bg-white/95 rounded-lg shadow-lg mb-4" style={{ borderColor: 'rgb(181,50,30)', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+              <h4 className="text-xl md:text-2xl font-league-spartan font-bold mb-4 md:mb-6" style={{ lineHeight: '130%', color: '#000000' }}>
                 From Idea to Execution – We analyze things <span style={{ color: '#000000', fontStyle: 'italic' }}>differently</span>.
               </h4>
-              <p className="text-base font-league-spartan leading-relaxed mb-6" style={{ lineHeight: '160%', color: 'rgb(60,60,60)', fontWeight: 400 }}>
+              <p className="text-sm md:text-base font-league-spartan leading-relaxed mb-4 md:mb-6" style={{ lineHeight: '150%', color: 'rgb(60,60,60)', fontWeight: 400 }}>
                 As your Second Opinion Consultants, we act as a trusted, independent partner—reviewing, refining, and strengthening your project at every stage. Our goal is to ensure that your vision is executed flawlessly, cost-effectively, and in full compliance with standards.
               </p>
             </div>
           </div>
         </motion.div>
         
-        {/* Methods Grid with enhanced shadow effects */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Methods Grid with enhanced shadow effects - Accordion on mobile */}
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 mb-16">
           {methods.map((method, index) => (
             <motion.div
               key={index}
@@ -112,7 +124,40 @@ const HowSection = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="relative h-52 overflow-hidden group hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl bg-white/95 border border-gray-200 hover:border-[rgb(0,0,0,0.3)] rounded-lg" 
+              {/* Mobile accordion view */}
+              <div className="md:hidden relative overflow-hidden border border-gray-200 bg-white/95 rounded-lg shadow-md mb-1">
+                <div 
+                  className="flex justify-between items-center p-4 cursor-pointer"
+                  onClick={() => toggleCard(index)}
+                >
+                  <h3 className="text-lg font-league-spartan font-bold" style={{ color: 'rgb(0,0,0)' }}>
+                    {method.title}
+                  </h3>
+                  <div className="text-gray-500">
+                    {isCardExpanded(index) ? <Minus className="h-5 w-5 text-red-500" /> : <Plus className="h-5 w-5 text-red-500" />}
+                  </div>
+                </div>
+                
+                {/* Expandable content */}
+                <motion.div 
+                  initial={false}
+                  animate={{ 
+                    height: isCardExpanded(index) ? 'auto' : 0,
+                    opacity: isCardExpanded(index) ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-4 pt-0">
+                    <p className="text-sm leading-relaxed font-league-spartan" style={{ color: '#000000', fontWeight: 400 }}>
+                      {method.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+              
+              {/* Desktop card view - unchanged */}
+              <div className="hidden md:block relative h-52 overflow-hidden group hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl bg-white/95 border border-gray-200 hover:border-[rgb(0,0,0,0.3)] rounded-lg" 
                    style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.08)', transition: 'all 0.3s ease-in-out' }}
                    onMouseOver={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)'}
                    onMouseOut={(e) => e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'}
@@ -140,10 +185,10 @@ const HowSection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-3xl font-league-spartan font-bold text-center mb-12" style={{ color: 'rgb(76,74,75)' }}>
+          <h3 className="text-2xl md:text-3xl font-league-spartan font-bold text-center mb-8 md:mb-12 px-4" style={{ color: 'rgb(76,74,75)' }}>
             We review, refine, and enhance your project at any stage:
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
             {stages.map((stage, index) => (
               <motion.div
                 key={index}
@@ -154,15 +199,15 @@ const HowSection = () => {
               >
                 <div className="relative h-full overflow-hidden group hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl rounded-2xl bg-gray-800">
                   {/* Content */}
-                  <div className="relative flex flex-col items-center justify-center p-5 text-center h-full min-h-[240px]">
+                  <div className="relative flex flex-col items-center justify-center p-4 md:p-5 text-center h-full min-h-[120px] md:min-h-[240px]">
                     {/* Number with faded rusty red gradient background */}
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full text-3xl font-league-spartan font-bold mb-4 text-white shadow-lg" style={{ background: 'linear-gradient(135deg, rgba(76,74,75,0.7) 0%, rgba(40,40,40,0.6) 100%)' }}>
+                    <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full text-2xl md:text-3xl font-league-spartan font-bold mb-2 md:mb-4 text-white shadow-lg" style={{ background: 'linear-gradient(135deg, rgba(76,74,75,0.7) 0%, rgba(40,40,40,0.6) 100%)' }}>
                       {stage.number}
                     </div>
-                    <h4 className="text-xl font-league-spartan font-bold mb-4 text-white">
+                    <h4 className="text-lg md:text-xl font-league-spartan font-bold mb-2 md:mb-4 text-white">
                       {stage.title}
                     </h4>
-                    <p className="font-league-spartan font-thin text-gray-300 leading-relaxed">
+                    <p className="text-xs md:text-base font-league-spartan font-thin text-gray-300 leading-tight md:leading-relaxed">
                       {stage.description}
                     </p>
                   </div>
@@ -202,45 +247,45 @@ const HowSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="p-8 md:p-12 shadow-2xl" style={{ borderRadius: '8px', backgroundColor: 'rgba(240,240,240,0.9)', boxShadow: '0 20px 40px rgba(0,0,0,0.12), 0 15px 25px rgba(0,0,0,0.08)' }}>
-            <div className="text-center mb-6">
-              <h3 className="text-2xl md:text-3xl font-league-spartan font-bold" style={{ color: 'rgb(0,0,0)' }}>
+          <div className="p-5 md:p-8 lg:p-12 shadow-2xl" style={{ borderRadius: '8px', backgroundColor: 'rgba(240,240,240,0.9)', boxShadow: '0 20px 40px rgba(0,0,0,0.12), 0 15px 25px rgba(0,0,0,0.08)' }}>
+            <div className="text-center mb-4 md:mb-6">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-league-spartan font-bold" style={{ color: 'rgb(0,0,0)' }}>
                 Looking Sideways is an Art and a Science.
               </h3>
             </div>
-            <p className="text-lg mb-6 font-league-spartan" style={{ color: 'rgb(60,60,60)', letterSpacing: '0.01em', fontWeight: 400 }}>
+            <p className="text-sm md:text-base lg:text-lg mb-4 md:mb-6 font-league-spartan" style={{ color: 'rgb(60,60,60)', letterSpacing: '0.01em', fontWeight: 400 }}>
               Our expertise helps you save money, time, and resources to ensure your project&apos;s success.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 text-sm">
+            <div className="flex flex-row flex-wrap justify-around gap-4 md:gap-6 text-sm">
               <div className="flex items-center justify-center">
                 <Image
                   src="/images/Only 2.png"
                   alt="Opinion Chambers Logo"
-                  width={30}
-                  height={30}
-                  className="mr-3 flex-shrink-0"
+                  width={24}
+                  height={24}
+                  className="mr-2 md:mr-3 flex-shrink-0"
                 />
-                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>Process Optimization</span>
+                <span className="font-league-spartan font-medium text-xs md:text-sm" style={{ color: 'rgb(76,74,75)' }}>Process Optimization</span>
               </div>
               <div className="flex items-center justify-center">
                 <Image
                   src="/images/Only 2.png"
                   alt="Opinion Chambers Logo"
-                  width={30}
-                  height={30}
-                  className="mr-3 flex-shrink-0"
+                  width={24}
+                  height={24}
+                  className="mr-2 md:mr-3 flex-shrink-0"
                 />
-                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>Cost Efficiency</span>
+                <span className="font-league-spartan font-medium text-xs md:text-sm" style={{ color: 'rgb(76,74,75)' }}>Cost Efficiency</span>
               </div>
               <div className="flex items-center justify-center">
                 <Image
                   src="/images/Only 2.png"
                   alt="Opinion Chambers Logo"
-                  width={30}
-                  height={30}
-                  className="mr-3 flex-shrink-0"
+                  width={24}
+                  height={24}
+                  className="mr-2 md:mr-3 flex-shrink-0"
                 />
-                <span className="font-league-spartan font-medium" style={{ color: 'rgb(76,74,75)' }}>Quality Assurance</span>
+                <span className="font-league-spartan font-medium text-xs md:text-sm" style={{ color: 'rgb(76,74,75)' }}>Quality Assurance</span>
               </div>
             </div>
           </div>
