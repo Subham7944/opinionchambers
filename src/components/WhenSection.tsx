@@ -2,8 +2,39 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const WhenSection = () => {
+  const [showAllCards, setShowAllCards] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [animationType, setAnimationType] = useState({ x: 0, y: 30 });
+  
+  // Handle window resize to ensure proper display
+  useEffect(() => {
+    // Check if we're in the browser environment
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const desktop = window.innerWidth >= 768;
+        setIsDesktop(desktop);
+        
+        // Set animation type based on screen size
+        if (desktop) {
+          setAnimationType({ x: 0, y: 30 }); // Desktop: Only fade in and slide up
+          if (!showAllCards) {
+            // Don't need to toggle if on desktop
+            setShowAllCards(true);
+          }
+        } else {
+          setAnimationType({ x: 50, y: 0 }); // Mobile: Side animation
+        }
+      };
+
+      // Set initial state based on screen size
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [showAllCards]);
   const scenarios = [
     {
       title: "You need a fresh design perspective",
@@ -73,7 +104,7 @@ const WhenSection = () => {
                 When to Seek a Second Opinion
               </h3>
               <p className="text-lg font-league-spartan leading-relaxed" style={{ lineHeight: '160%', color: 'rgb(60,60,60)', fontWeight: 400 }}>
-                A second opinion isn&apos;t just for when things go wrong—it&apos;s a smart choice at any stage of your project to ensure the best possible outcome.
+                A second opinion isn&apos;t just for when things go wrong - it&apos;s a smart choice at any stage of your project to ensure the best possible outcome.
               </p>
             </div>
             
@@ -122,13 +153,17 @@ const WhenSection = () => {
             </h3>
           </motion.div>
 
-          {/* Scenarios Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {scenarios.map((scenario, index) => (
+          {/* Scenarios Grid - First 4 items (always visible) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {scenarios.slice(0, 4).map((scenario, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{
+                  opacity: 0, 
+                  x: !isDesktop ? (index % 2 === 0 ? -animationType.x : animationType.x) : 0, 
+                  y: isDesktop ? animationType.y : 0
+                }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="bg-white bg-opacity-90 p-6 border-l-4 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-[1.02]"
@@ -142,6 +177,53 @@ const WhenSection = () => {
                 </p>
               </motion.div>
             ))}
+          </div>
+          
+          {/* Scenarios Grid - Last 4 items (hidden on mobile) */}
+          <motion.div 
+            initial={{ opacity: 1, height: "auto" }}
+            animate={{ 
+              opacity: showAllCards || isDesktop ? 1 : 0,
+              height: showAllCards || isDesktop ? "auto" : 0
+            }}
+            transition={{ duration: 0.5 }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 overflow-hidden"
+          >
+            {scenarios.slice(4).map((scenario, index) => {
+              const actualIndex = index + 4; // Adjust index for animation calculation
+              return (
+                <motion.div
+                  key={actualIndex}
+                  initial={{
+                    opacity: 0, 
+                    x: !isDesktop ? (actualIndex % 2 === 0 ? -animationType.x : animationType.x) : 0, 
+                    y: isDesktop ? animationType.y : 0
+                  }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white bg-opacity-90 p-6 border-l-4 hover:shadow-lg transition-all duration-300 hover:transform hover:scale-[1.02]"
+                  style={{ borderColor: 'rgb(181,50,30)' }}
+                >
+                  <h4 className="font-league-spartan font-bold mb-3 text-lg" style={{ lineHeight: '130%', color: 'rgb(76,74,75)' }}>
+                    {scenario.title}
+                  </h4>
+                  <p className="font-league-spartan font-thin leading-relaxed text-sm" style={{ lineHeight: '150%', color: '#000000' }}>
+                    {scenario.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+          
+          {/* Read More Button - Only visible on mobile */}
+          <div className="md:hidden flex justify-center mt-6 mb-10">
+            <button 
+              onClick={() => setShowAllCards(!showAllCards)}
+              className="border-2 border-[#6f6e6f] text-[#6f6e6f] hover:border-[rgb(181,50,30)] hover:text-[rgb(181,50,30)] font-league-spartan font-medium py-3 px-12 transition-colors duration-300 text-base tracking-wide"
+            >
+              {showAllCards ? "READ LESS" : "READ MORE"}
+            </button>
           </div>
         </div>
       </div>

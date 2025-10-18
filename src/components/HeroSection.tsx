@@ -32,7 +32,7 @@ const HeroSection = () => {
       />
 
       {/* Enhanced Architectural Line Patterns - Matrix Effect */}
-      {/* <div className="absolute inset-0 opacity-[0.04] z-30" 
+      <div className="absolute inset-0 opacity-[0.04] z-30" 
         style={{
           backgroundImage: `
             linear-gradient(90deg, rgba(76,74,75,0.5) 1px, transparent 1px),
@@ -41,10 +41,10 @@ const HeroSection = () => {
           backgroundSize: '60px 60px',
           pointerEvents: 'none'
         }}>
-      </div> */}
+      </div>
 
       {/* Architectural Blueprint Lines */}
-      {/* <div className="absolute inset-0 opacity-[0.08] z-30" style={{ pointerEvents: 'none' }}>
+      <div className="absolute inset-0 opacity-[0.08] z-30" style={{ pointerEvents: 'none' }}>
         Horizontal blueprint lines
         <div className="absolute top-[20%] left-0 w-full h-[2px]" style={{background: 'linear-gradient(90deg, transparent 0%, rgba(76,74,75,0.6) 20%, rgba(76,74,75,0.6) 80%, transparent 100%)'}}></div>
         <div className="absolute top-[40%] left-0 w-full h-[2px]" style={{background: 'linear-gradient(90deg, transparent 0%, rgba(76,74,75,0.5) 30%, rgba(76,74,75,0.5) 70%, transparent 100%)'}}></div>
@@ -56,10 +56,10 @@ const HeroSection = () => {
         <div className="absolute top-0 left-[35%] w-[2px] h-full" style={{background: 'linear-gradient(0deg, transparent 0%, rgba(76,74,75,0.6) 30%, rgba(76,74,75,0.6) 70%, transparent 100%)'}}></div>
         <div className="absolute top-0 left-[65%] w-[2px] h-full" style={{background: 'linear-gradient(0deg, transparent 0%, rgba(76,74,75,0.5) 25%, rgba(76,74,75,0.5) 75%, transparent 100%)'}}></div>
         <div className="absolute top-0 left-[85%] w-[2px] h-full" style={{background: 'linear-gradient(0deg, transparent 0%, rgba(76,74,75,0.6) 15%, rgba(76,74,75,0.6) 85%, transparent 100%)'}}></div>
-      </div> */}
+      </div>
 
       {/* Additional Architectural Accent Lines */}
-      {/* <div className="absolute bottom-0 left-[50%] top-0 z-30" style={{width: '2px', background: 'linear-gradient(0deg, transparent, rgba(76,74,75,0.3) 30%, rgba(76,74,75,0.3) 70%, transparent)', opacity: '0.4', pointerEvents: 'none'}}></div> */}
+      <div className="absolute bottom-0 left-[50%] top-0 z-30" style={{width: '2px', background: 'linear-gradient(0deg, transparent, rgba(76,74,75,0.3) 30%, rgba(76,74,75,0.3) 70%, transparent)', opacity: '0.4', pointerEvents: 'none'}}></div>
 
       {/* Main Content - Two Column Layout */}
       <div className="relative z-40 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -69,7 +69,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col items-start text-left md:pl-4 lg:pl-8"
+            className="flex flex-col items-center text-center md:items-start md:text-left md:pl-4 lg:pl-8"
           >
             {/* Tagline */}
             <motion.div
@@ -79,7 +79,7 @@ const HeroSection = () => {
               className="mb-8"
             >
               <p
-                className="font-league-spartan font-medium text-xl md:text-2xl pl-4 italic tracking-widest"
+                className="font-league-spartan font-medium text-lg md:text-xl lg:text-2xl pl-0 md:pl-4 italic tracking-widest"
                 style={{
                   color: "#000000",
                   letterSpacing: "0.075em",
@@ -98,7 +98,7 @@ const HeroSection = () => {
               className="mb-8"
             >
               <h1 className="pl-(-2) leading-tight">
-                <div className="flex justify-start mb-2">
+                <div className="flex justify-center md:justify-start mb-2">
                   <Image
                     src="/images/hero/opinion.png"
                     alt="Opinion"
@@ -108,7 +108,7 @@ const HeroSection = () => {
                     priority
                   />
                 </div>
-                <div className="flex justify-start">
+                <div className="flex justify-center md:justify-start">
                   <Image
                     src="/images/hero/chambers.png"
                     alt="Chambers"
@@ -120,7 +120,7 @@ const HeroSection = () => {
               </h1>
 
               {/* Underline */}
-              <div className="w-3/4 mt-6 mb-8">
+              <div className="w-3/4 mt-6 mb-8 mx-auto md:mx-0">
                 <div
                   className="h-0.5"
                   style={{ backgroundColor: "rgb(76,74,75)", width: "100%" }}
@@ -133,7 +133,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-left"
+              className="text-center md:text-left"
             >
               <p
                 className="font-league-spartan font-medium text-lg md:text-xl uppercase tracking-wider leading-relaxed"
@@ -144,10 +144,10 @@ const HeroSection = () => {
                 FOR ARCHITECTURE & INTERIORS
               </p>
               <p
-                className="font-league-spartan text-lg md:text-xl mt-6 leading-relaxed"
+                className="font-league-spartan text-sm md:text-lg lg:text-xl mt-6 leading-relaxed mx-auto md:mx-0"
                 style={{ color: "#000000", maxWidth: "90%", fontWeight: 500 }}
               >
-                From Paper to reality, we ensure your project&apos;s journey is
+                From paper to reality, we ensure your project&apos;s journey is
                 smooth, efficient, and true to its design.
               </p>
             </motion.div>
@@ -161,7 +161,7 @@ const HeroSection = () => {
             className="flex items-center justify-center"
           >
             <div
-              className="text-left max-w-md lg:max-w-lg relative z-10 bg-white bg-opacity-50 rounded-lg shadow-md py-10 px-8 backdrop-blur-sm border-l-4"
+              className="text-center md:text-left max-w-sm md:max-w-md lg:max-w-lg relative z-10 bg-white bg-opacity-50 rounded-lg shadow-md py-6 px-6 md:py-10 md:px-8 backdrop-blur-sm border-l-4"
               style={{ borderColor: "rgb(181,50,30)" }}
             >
               {/* Content */}
@@ -173,7 +173,7 @@ const HeroSection = () => {
               >
                 {/* Title */}
                 <h2
-                  className="text-xl md:text-2xl font-league-spartan font-bold leading-tight tracking-wide"
+                  className="text-lg md:text-xl lg:text-2xl font-league-spartan font-bold leading-tight tracking-wide"
                   style={{ color: "rgb(76,74,75)", letterSpacing: "0.02em" }}
                 >
                   The Strategic Checkpoint
@@ -188,12 +188,12 @@ const HeroSection = () => {
                   initial={{ width: 0 }}
                   animate={{ width: "40%" }}
                   transition={{ duration: 0.8, delay: 0.7 }}
-                  className="h-px ml-0"
+                  className="h-px mx-auto md:ml-0"
                   style={{ backgroundColor: "rgb(76,74,75)" }}
                 />
 
                 <p
-                  className="font-league-spartan text-base md:text-lg leading-relaxed"
+                  className="font-league-spartan text-sm md:text-base lg:text-lg leading-relaxed"
                   style={{
                     color: "#000000",
                     fontWeight: 500,
@@ -212,7 +212,7 @@ const HeroSection = () => {
                 </p>
 
                 <p
-                  className="font-league-spartan text-base md:text-lg leading-relaxed"
+                  className="font-league-spartan text-sm md:text-base lg:text-lg leading-relaxed"
                   style={{
                     color: "#000000",
                     fontWeight: 500,
@@ -238,7 +238,7 @@ const HeroSection = () => {
         transition={{ duration: 0.8, delay: 1.4 }}
         className="absolute bottom-8 right-8 z-50"
       >
-        <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-opacity-80 p-2 shadow-lg">
+        <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-opacity-80 p-2">
           <Image
             src="/images/hero/LOGO (1).jpg"
             alt="Opinion Chambers Logo"
