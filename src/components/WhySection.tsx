@@ -224,14 +224,14 @@ const WhySection = () => {
         </motion.div>
       </div>
 
-      {/* All 5 Points in One Row */}
+      {/* 5 Points in Responsive Layout */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-5 gap-3 mb-20"
+          className="hidden md:grid md:grid-cols-5 gap-3 mb-20"
         >
           {allSteps.map((step, index) => (
             <motion.div
@@ -278,6 +278,105 @@ const WhySection = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile View: 3+2 Layout */}
+        <div className="md:hidden mb-20">
+          {/* First row - 3 cards */}
+          <div className="grid grid-cols-3 gap-2 mb-3">
+            {allSteps.slice(0, 3).map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative overflow-hidden group cursor-pointer"
+              >
+                <div className="aspect-[1/1] relative">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  {/* Image Overlay */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)",
+                    }}
+                  />
+                </div>
+                {/* Text Below Image */}
+                <div className="pt-2">
+                  <h3
+                    className="text-xs font-league-spartan font-bold mb-1"
+                    style={{ lineHeight: "120%", color: "rgb(76,74,75)" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-xs leading-relaxed font-league-spartan font-medium"
+                    style={{ lineHeight: "140%", color: "#000000" }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Second row - 2 centered cards */}
+          <div className="flex justify-center gap-2">
+            {allSteps.slice(3).map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
+                viewport={{ once: true }}
+                className="relative overflow-hidden group cursor-pointer w-1/3"
+              >
+                <div className="aspect-[1/1] relative">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+                  {/* Image Overlay */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)",
+                    }}
+                  />
+                </div>
+                {/* Text Below Image */}
+                <div className="pt-2">
+                  <h3
+                    className="text-xs font-league-spartan font-bold mb-1"
+                    style={{ lineHeight: "120%", color: "rgb(76,74,75)" }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-xs leading-relaxed font-league-spartan font-medium"
+                    style={{ lineHeight: "140%", color: "#000000" }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* The Opinion Chambers Advantage Section - Full Width with Semi-transparent Background */}

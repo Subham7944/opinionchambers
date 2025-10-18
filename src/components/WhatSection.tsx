@@ -347,9 +347,11 @@ const WhatSection = () => {
             >
               Our Mission: Protect Your Vision & Investment
             </h3>
-            <div className="flex flex-row justify-between md:grid md:grid-cols-3 gap-0 md:gap-6 lg:gap-8 mb-8">
-              <div className="bg-white/50 p-2 md:p-4 rounded-lg flex-shrink-0 w-1/3 min-w-[100px] md:w-auto md:min-w-0 mx-1 md:mx-0">
-                <div className="flex flex-col md:flex md:flex-col items-center">
+            {/* Mobile and Desktop Value Propositions */}
+            <div className="grid grid-cols-3 gap-2 md:gap-6 lg:gap-8 mb-8">
+              {/* Ensure Compliance */}
+              <div className="bg-white/50 p-2 md:p-4 rounded-lg">
+                <div className="flex flex-col items-center justify-center h-full">
                   <h4
                     className="text-xs md:text-base lg:text-base font-league-spartan font-bold text-center"
                     style={{ color: "#000000" }}
@@ -364,8 +366,10 @@ const WhatSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-white/50 p-2 md:p-4 rounded-lg flex-shrink-0 w-1/3 min-w-[100px] md:w-auto md:min-w-0 mx-1 md:mx-0">
-                <div className="flex flex-col md:flex md:flex-col items-center">
+              
+              {/* Superior Finishes */}
+              <div className="bg-white/50 p-2 md:p-4 rounded-lg">
+                <div className="flex flex-col items-center justify-center h-full">
                   <h4
                     className="text-xs md:text-base lg:text-base font-league-spartan font-bold text-center"
                     style={{ color: "#000000" }}
@@ -380,8 +384,10 @@ const WhatSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-white/50 p-2 md:p-4 rounded-lg flex-shrink-0 w-1/3 min-w-[100px] md:w-auto md:min-w-0 mx-1 md:mx-0">
-                <div className="flex flex-col md:flex md:flex-col items-center">
+              
+              {/* Design Efficiency */}
+              <div className="bg-white/50 p-2 md:p-4 rounded-lg">
+                <div className="flex flex-col items-center justify-center h-full">
                   <h4
                     className="text-xs md:text-base lg:text-base font-league-spartan font-bold text-center"
                     style={{ color: "#000000" }}
