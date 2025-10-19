@@ -39,32 +39,32 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#what" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  What We Do
+                <a href="#what" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
+                  What
                 </a>
               </li>
               <li>
-                <a href="#why" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  Why Choose Us
+                <a href="#why" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
+                  Why
                 </a>
               </li>
               <li>
-                <a href="#when" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  When to Consult
+                <a href="#when" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
+                  When
                 </a>
               </li>
               <li>
-                <a href="#how" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  Our Methods
+                <a href="#how" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
+                  Methods
                 </a>
               </li>
               <li>
-                <a href="#legacy" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  Our Legacy
+                <a href="#legacy" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
+                  Legacy
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <a href="#contact" className="text-sm md:text-base text-gray-400 hover:text-blue-400 transition-colors">
                   Contact Us
                 </a>
               </li>
